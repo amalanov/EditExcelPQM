@@ -1,0 +1,97 @@
+{
+	"name": "editexcelpqm",
+	"displayName": "EditExcelPQM",
+	"description": "Editor for Power Query Code inside xlsx files",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.extract_pqm_from_excel",
+		"onCommand:extension.extract_pqm_to_excel",
+		"onCommand:extension.close_excel"
+	],
+	"publisher": "AlexMa",
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.extract_pqm_from_excel",
+				"title": "Excel -> M"
+			},
+			{
+				"command": "extension.extract_pqm_to_excel",
+				"title": "M -> Excel"
+			},
+			{
+				"command": "extension.close_excel",
+				"title": "Save current state and close Excel"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "resourceLangId == xlsx",
+					"command": "extension.extract_pqm_from_excel",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceLangId == xlsx",
+					"command": "extension.extract_pqm_to_excel",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceLangId == xlsx",
+					"command": "extension.close_excel",
+					"group": "navigation"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "xlsx",
+				"extensions": [
+					".xlsx",
+					".xlsm"
+				]
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/amalanov/EditExcelPQM.git"
+	},
+	"scripts": {
+		"build_console_app": "npm rebuild",
+		"build_winax_for_vscode": "cd node_modules/winax && node-gyp rebuild --target=7.2.4 --arch=x64 --dist-url=https://electronjs.org/headers",
+		"build_vscode_extension": "npm rebuild && npm run build_winax_for_vscode",
+		"pack_extension": "vsce package",
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.47.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"dependencies": {
+		"@types/activex-excel": "^14.0.5",
+		"winax": "^1.19.0",
+		"fs": "0.0.1-security"
+	}
+}
