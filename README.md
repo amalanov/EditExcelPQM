@@ -1,6 +1,6 @@
 # editexcelpwm README
 
-This is the README for your extension "editexcelpwm". After writing up a brief description, we recommend including the following sections.
+Edit your Power Query M code of your xlsx filr with Visual Studio Code instead of Excel's built in editor.
 
 ## Features
 
