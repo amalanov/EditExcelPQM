@@ -1,6 +1,7 @@
 # editexcelpwm README
 
-Stop using Excel's built-in M editor. Edit your Power Query M code of your xlsx file with Visual Studio Code!
+Want to edit Power Query M code of your xlsx file in VSCode and use Excel as interpriter? - Use my plugin. 
+![Image of demo](images/demo.gif)
 
 ## Features
 
@@ -9,7 +10,7 @@ Stop using Excel's built-in M editor. Edit your Power Query M code of your xlsx 
 * Edit M code in VSCode and run queries in Excel immediately 
 * Create new queries and upload them to Excel
 
-![Image of demo](images/demo.gif)
+
 
 ## Requirements
 
