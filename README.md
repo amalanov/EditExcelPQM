@@ -7,6 +7,7 @@ Want to edit Power Query M code of your xlsx file in VSCode and use Excel as int
 * Import queries from *.m file to xlsx/xlsm
 * Edit M code in VSCode and run queries in Excel immediately 
 * Create new queries and upload them to Excel
+* Delete queries from VSCode
 
 ## Requirements
 * VSCode ^1.33.0
