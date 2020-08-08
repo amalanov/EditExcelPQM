@@ -3,3 +3,6 @@ node_modules
 .vscode-test/
 src/test/
 ! node_modules/winax
+.vscodeignore
+.eslintrc.json
+.gitignore

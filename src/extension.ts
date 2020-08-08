@@ -5,18 +5,20 @@ import { PowerQueryMCodeReader, ExcelRegistry } from "./ExcelHandler";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	let excelRegistry = new ExcelRegistry(function(msg: string) {vscode.window.showInformationMessage(msg)});
+	let logger = function(msg: string) {vscode.window.showInformationMessage("EditExcelPQM: " + msg);};
+	let errorLog = function(msg: string) {vscode.window.showErrorMessage("EditExcelPQM: " + msg);};
+	let excelRegistry = new ExcelRegistry(logger);
 
 	let extract = vscode.commands.registerCommand('extension.extract_pqm_from_excel', (file: vscode.Uri) => {
 		try{
-			vscode.window.showInformationMessage("Start export Excel->M");
+			logger("Start export Excel->M");
 			let loader = new PowerQueryMCodeReader(file.fsPath, excelRegistry);
 			loader.importFromExcel();
 			loader.exportToFile();
-			vscode.window.showInformationMessage("Finish export Excel->M");
+			logger("Finish export Excel->M");
 		} catch (e){
 			if (e instanceof Error){
-				vscode.window.showErrorMessage("Error while extracting from Excel: " + e.message);
+				errorLog("Error while extracting from Excel: " + e.message);
 			}
 		}
 	});
@@ -24,31 +26,44 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let save = vscode.commands.registerCommand('extension.extract_pqm_to_excel', (file: vscode.Uri) => {
 		try{
-			vscode.window.showInformationMessage("Start export M->Excel");
+			logger("Start export M->Excel");
 			let loader = new PowerQueryMCodeReader(file.fsPath, excelRegistry);
 			loader.importFromFile();
 			loader.exportToExcel();
-			vscode.window.showInformationMessage("Finish export M->Excel");
+			logger("Finish export M->Excel");
 		} catch (e) {
 			if (e instanceof  Error){
-				vscode.window.showErrorMessage("Error while saving to Excel: " + e.message);
+				errorLog("EditExcelPQM: Error while saving to Excel: " + e.message);
 			}
 		}
 	});
 	context.subscriptions.push(save);
 
-	let close = vscode.commands.registerCommand('extension.close_excel', (file: vscode.Uri) => {
+	let closeSave = vscode.commands.registerCommand('extension.close_excel_save', (file: vscode.Uri) => {
 		try{
-			vscode.window.showInformationMessage("Save changes and close xlsx file");
-			excelRegistry.close(file.fsPath);
-			vscode.window.showInformationMessage("Finish saving and closing");
+			logger("Save changes and close xlsx file");
+			excelRegistry.close(file.fsPath, true);
+			logger("Finish saving and closing");
 		} catch (e) {
 			if (e instanceof  Error){
-				vscode.window.showErrorMessage("Error while closing Excel: " + e.message);
+				errorLog("EditExcelPQM: Error while closing Excel: " + e.message);
 			}
 		}
 	});
-	context.subscriptions.push(close);
+	context.subscriptions.push(closeSave);
+
+	let closeNoSave = vscode.commands.registerCommand('extension.close_excel_nosave', (file: vscode.Uri) => {
+		try{
+			logger("Close xlsx file without saving");
+			excelRegistry.close(file.fsPath, false);
+			logger("Finish closing");
+		} catch (e) {
+			if (e instanceof  Error){
+				errorLog("Error while closing Excel: " + e.message);
+			}
+		}
+	});
+	context.subscriptions.push(closeNoSave);
 
 	context.subscriptions.push(excelRegistry);
 }

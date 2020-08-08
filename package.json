@@ -2,7 +2,10 @@
 	"name": "editexcelpqm",
 	"displayName": "EditExcelPQM",
 	"description": "Editor for Power Query Code inside xlsx files",
-	"version": "1.0.0",
+	"version": "1.0.1",
+	"license": "SEE LICENSE IN LICENSE.md",
+	"keywords": ["power query m", "powerquerym", "powerquery", "excel", "xlsx"],
+	"icon": "editexcelpqm_icon.png",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -12,7 +15,8 @@
 	"activationEvents": [
 		"onCommand:extension.extract_pqm_from_excel",
 		"onCommand:extension.extract_pqm_to_excel",
-		"onCommand:extension.close_excel"
+		"onCommand:extension.close_excel_save",
+		"onCommand:extension.close_excel_nosave"
 	],
 	"publisher": "AlexMa",
 	"main": "./out/extension.js",
@@ -20,15 +24,19 @@
 		"commands": [
 			{
 				"command": "extension.extract_pqm_from_excel",
-				"title": "Excel -> M"
+				"title": "EEPQM: Excel -> M"
 			},
 			{
 				"command": "extension.extract_pqm_to_excel",
-				"title": "M -> Excel"
+				"title": "EEPQM: M -> Excel"
 			},
 			{
-				"command": "extension.close_excel",
-				"title": "Save current state and close Excel"
+				"command": "extension.close_excel_save",
+				"title": "EEPQM: Close with saving"
+			},
+			{
+				"command": "extension.close_excel_nosave",
+				"title": "EEPQM: Close xlsx. Don't save"
 			}
 		],
 		"menus": {
@@ -45,7 +53,12 @@
 				},
 				{
 					"when": "resourceLangId == xlsx",
-					"command": "extension.close_excel",
+					"command": "extension.close_excel_save",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceLangId == xlsx",
+					"command": "extension.close_excel_nosave",
 					"group": "navigation"
 				}
 			]
