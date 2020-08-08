@@ -11,12 +11,12 @@ Want to edit Power Query M code of your xlsx file in VSCode and use Excel as int
 ## Demo
 ![Image of demo](images/demo.gif)
 
-## Requirements
-* VSCode ^1.33.0
-* Windows
-* MS Excel ^2016 - it uses AxtiveXObject to open xlsx and extract data
-
 ## Install to Visual Studio Code
 1) Download [vsix file](editexcelpqm-1.0.1.vsix)
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
+
+## Requirements
+* VSCode ^1.33.0
+* Windows
+* MS Excel ^2016 - it uses AxtiveXObject to open xlsx and extract data
