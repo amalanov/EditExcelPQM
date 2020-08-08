@@ -1,5 +1,5 @@
 # EditExcelPQM README
-Want to edit Power Query M code of your xlsx file in VSCode and use Excel as interpriter? - Use this. 
+Want to edit Power Query M code of your xlsx file in VSCode and use Excel as interpriter? - Here is the plugin. 
 
 ## Features
 * Export all M queries from xlsx/xlsm file to *.m file
