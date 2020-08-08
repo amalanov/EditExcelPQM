@@ -1,6 +1,5 @@
 # EditExcelPQM README
 Want to edit Power Query M code of your xlsx file in VSCode and use Excel as interpriter? - Use this. 
-![Image of demo](images/demo.gif)
 
 ## Features
 * Export all M queries from xlsx/xlsm file to *.m file
@@ -8,6 +7,9 @@ Want to edit Power Query M code of your xlsx file in VSCode and use Excel as int
 * Edit M code in VSCode and run queries in Excel immediately 
 * Create new queries and upload them to Excel
 * Delete queries from VSCode
+
+## Demo
+![Image of demo](images/demo.gif)
 
 ## Requirements
 * VSCode ^1.33.0
