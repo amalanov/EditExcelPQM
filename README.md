@@ -1,4 +1,4 @@
-# EditExcelPQM README
+# EditExcelPQM - edit M code of your xlsx in VSCode
 Want to edit Power Query M code of your xlsx file in VSCode and use Excel as interpriter? - Here is the plugin. 
 
 ## Features
@@ -12,9 +12,15 @@ Want to edit Power Query M code of your xlsx file in VSCode and use Excel as int
 ![Image of demo](images/demo.gif)
 
 ## Install to Visual Studio Code
-1) Download [vsix file](editexcelpqm-1.0.1.vsix)
+From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemName=AMalanov.editexcelpqm) or manually:
+1) Download [vsix file](editexcelpqm-1.0.1.vsix) from this repo
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
+
+## Known issues
+* Unable to fully close Excel - window is closed, but it remains in process manager
+* If your Excel shows a message on startup, plugin is unable to access queries before you close the popup
+* On some systems the plugin opens Excel in background mode and I'm not able to do it visible.
 
 ## Requirements
 * VSCode ^1.33.0

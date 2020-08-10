@@ -18,7 +18,7 @@
 		"onCommand:extension.close_excel_save",
 		"onCommand:extension.close_excel_nosave"
 	],
-	"publisher": "AlexMa",
+	"publisher": "AMalanov",
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
