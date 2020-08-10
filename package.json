@@ -2,9 +2,15 @@
 	"name": "editexcelpqm",
 	"displayName": "EditExcelPQM",
 	"description": "Editor for Power Query Code inside xlsx files",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"license": "SEE LICENSE IN LICENSE.md",
-	"keywords": ["power query m", "powerquerym", "powerquery", "excel", "xlsx"],
+	"keywords": [
+		"power query m",
+		"powerquerym",
+		"powerquery",
+		"excel",
+		"xlsx"
+	],
 	"icon": "editexcelpqm_icon.png",
 	"engines": {
 		"vscode": "^1.33.0"
