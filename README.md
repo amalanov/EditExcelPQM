@@ -13,7 +13,7 @@ Want to edit Power Query M code of your xlsx file in VSCode and use Excel as int
 
 ## Install to Visual Studio Code
 From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemName=AMalanov.editexcelpqm) or manually:
-1) Download [vsix file](editexcelpqm-1.0.1.vsix) from this repo
+1) Download [vsix file](editexcelpqm-1.1.1.vsix) from this repo
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
 

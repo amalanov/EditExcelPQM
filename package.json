@@ -112,5 +112,10 @@
 		"@types/activex-excel": "^14.0.5",
 		"winax": "^1.19.0",
 		"fs": "0.0.1-security"
+	},
+	"__metadata": {
+		"id": "ffc84c91-1835-4032-a13e-4e70255bd22a",
+		"publisherDisplayName": "Sasha Ma",
+		"publisherId": "52c194d5-8202-4e5d-bdc1-3f1735ab24d1"
 	}
 }
