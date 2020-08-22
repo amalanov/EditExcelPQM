@@ -1,0 +1,32 @@
+PQM {
+    programm = (simpleExpression comma)*  simpleExpression
+    letInExpression = let programm in rightSide
+    simpleExpression = blank* identifier blank* "=" rightSide
+
+    rightSide =blank* (letInExpression | constant | callFunction | identifier) blank*
+        
+        
+    constant = numberLiteral | stringLiteral 
+    callFunction = identifier blank* "(" (rightSide comma)* rightSide ")"
+        
+    
+    blank = (space | comment)
+    comment = multiLineComment | singleLineComment
+    multiLineComment = "/*" (~"*/" sourceCharacter)* "*/"
+    singleLineComment = "//" (~lineTerminator sourceCharacter)* 
+
+
+    numberLiteral  
+    = "-"? digit* "." digit+  -- fract
+    | digit+             -- whole
+
+    stringLiteral = "\"" doubleStringCharacter* "\""
+    doubleStringCharacter = ~("\"" | "\\" | lineTerminator) sourceCharacter 
+    lineTerminator = "\n" | "\r" | "\u2028" | "\u2029"  
+    sourceCharacter = any
+        
+    let = "let" blank+
+    in = "in" blank+
+    identifier = "#"? (letter | "_")*
+    comma = ","
+}
