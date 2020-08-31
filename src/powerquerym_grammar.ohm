@@ -3,11 +3,12 @@ PQM {
     letInExpression = let programm in rightSide
     simpleExpression = blank* identifier blank* "=" rightSide
 
-    rightSide =blank* (letInExpression | constant | callFunction | identifier) blank*
-        
+    rightSide = blank* (letInExpression | constant | callFunction | identifier | ifthenelse) blank*
+    insideif =  blank* (constant | callFunction | identifier ) blank*
         
     constant = numberLiteral | stringLiteral 
     callFunction = identifier blank* "(" (rightSide comma)* rightSide ")"
+    ifthenelse = "if" blank+ rightSide (compareSymbols insideif)?  blank+ "then" rightSide "else" rightSide
         
     
     blank = (space | comment)
@@ -15,7 +16,8 @@ PQM {
     multiLineComment = "/*" (~"*/" sourceCharacter)* "*/"
     singleLineComment = "//" (~lineTerminator sourceCharacter)* 
 
-
+	compareSymbols = blank* ("=" | ">=" | "<=" | ">" | "<" | "==") blank*
+    
     numberLiteral  
     = "-"? digit* "." digit+  -- fract
     | digit+             -- whole
@@ -27,6 +29,10 @@ PQM {
         
     let = "let" blank+
     in = "in" blank+
-    identifier = "#"? (letter | "_")*
+    identifierHash = "#" (letter | "_")*
+    identifierNoHash = ~(reservedWords blank+) (letter | "_")*
+    identifier = identifierNoHash | identifierHash
     comma = ","
+    
+    reservedWords = "let" | "in" | "each" | "if" | "then" | "else" | "try" | "otherwise" 
 }
