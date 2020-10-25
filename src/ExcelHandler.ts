@@ -1,5 +1,9 @@
-var winax = require('winax'); // required to define ActiveXObject
 import * as fs from 'fs';
+
+
+export function activate_winax(){
+    var winax = require('winax'); // required to define ActiveXObject
+}
 
 enum SourceType { Excel, M};
 

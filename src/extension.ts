@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { PowerQueryMCodeReader, ExcelRegistry } from "./ExcelHandler";
+import { activate_winax, PowerQueryMCodeReader, ExcelRegistry } from "./ExcelHandler";
 
 
 // this method is called when your extension is activated
@@ -8,6 +8,19 @@ export function activate(context: vscode.ExtensionContext) {
 	let logger = function(msg: string) {vscode.window.showInformationMessage("EditExcelPQM: " + msg);};
 	let errorLog = function(msg: string) {vscode.window.showErrorMessage("EditExcelPQM: " + msg);};
 	let excelRegistry = new ExcelRegistry(logger);
+
+	try{
+		activate_winax();
+	} catch (e){
+		errorLog("Hi! This is Sasha. Erro occured on load of winax module. " +
+				 "This is native node module. This could happen due to update of " +
+				 "VSCode Electron version. In this case you need either to download a new " +
+				 "version from my repo or change electron version in nmp task build_winax_for_vscode " +
+				 "and then run in Windows command line \n" +
+				 "nmp build_vscode_extension && nmp pack_extension\n" +
+				 "so the error is....\n" + e.message);
+		return;
+	}
 
 	let extract = vscode.commands.registerCommand('extension.extract_pqm_from_excel', (file: vscode.Uri) => {
 		try{

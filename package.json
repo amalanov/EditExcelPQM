@@ -30,11 +30,11 @@
 		"commands": [
 			{
 				"command": "extension.extract_pqm_from_excel",
-				"title": "EEPQM: Excel -> M"
+				"title": "EEPQM: *.xlsx/xlsm -> *.M"
 			},
 			{
 				"command": "extension.extract_pqm_to_excel",
-				"title": "EEPQM: M -> Excel"
+				"title": "EEPQM: *.M -> *.xlsx/xlsm"
 			},
 			{
 				"command": "extension.close_excel_save",
@@ -85,10 +85,13 @@
 	},
 	"scripts": {
 		"build_console_app": "npm rebuild",
-		"build_winax_for_vscode": "cd node_modules/winax && node-gyp rebuild --target=7.2.4 --arch=x64 --dist-url=https://electronjs.org/headers",
+		"build_winax_for_vscode": "cd node_modules/winax && node-gyp rebuild --target=9.2.1 --arch=x64 --dist-url=https://electronjs.org/headers",
 		"build_vscode_extension": "npm rebuild && npm run build_winax_for_vscode",
 		"pack_extension": "vsce package",
 		"vscode:prepublish": "npm run compile",
+		"publish_major": "vsce publish major",
+		"publish_minor": "vsce publish minor",
+		"publish_patch": "vsce publish patch",
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
