@@ -16,7 +16,7 @@ Please note
 ## Versions
 Get Electron version of your VSCode via Help->About
 * 1.1.1 supports Electron 7.2.1
-* 1.1.2 supports Electron 9.2.1
+* 1.1.4 supports Electron 9.2.1
 
 ## Features
 * Export all M queries from xlsx/xlsm file to *.m file
@@ -30,7 +30,7 @@ Get Electron version of your VSCode via Help->About
 
 ## Install to Visual Studio Code
 From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemName=AMalanov.editexcelpqm) or manually:
-1) Download [vsix file](editexcelpqm-1.1.2.vsix) from this repo
+1) Download [vsix file](editexcelpqm-1.1.4.vsix) from this repo
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
 
