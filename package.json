@@ -2,7 +2,7 @@
 	"name": "editexcelpqm",
 	"displayName": "EditExcelPQM",
 	"description": "Editor for Power Query Code inside xlsx files",
-	"version": "1.1.5",
+	"version": "1.1.4",
 	"license": "SEE LICENSE IN LICENSE.md",
 	"keywords": [
 		"power query m",
