@@ -83,7 +83,7 @@ export class ExcelRegistry implements IDisposable {
 
 export class PowerQueryMCodeReader implements IDisposable {
     queries : Map<string, string>;
-    excelFileName : string;
+    excelFileName!: string;
     pqmFileName: string;
     sourceType : SourceType;
     excelRegistry : ExcelRegistry;
@@ -97,17 +97,29 @@ export class PowerQueryMCodeReader implements IDisposable {
         this.excelRegistry = excelRegistry;
         this.queries = new Map();
 
-        this.pqmFileName = fileName.replace(new RegExp("xls.$"), "m");;
-        this.excelFileName = fileName.replace(new RegExp("m$"), "xlsx");
+        let xls_regexp = new RegExp("\\.xls.$");
+        let m_regexp = new RegExp("\\.m$");
 
-        if (fileName.toLowerCase().endsWith(".m")){
-            this.sourceType = SourceType.M;
-        } else if (fileName.toLowerCase().endsWith(".xlsx") || fileName.toLowerCase().endsWith(".xlsm")) {
+        if (fileName.toLowerCase().match(xls_regexp)){
             this.sourceType = SourceType.Excel;
+            this.pqmFileName = fileName.toLowerCase().replace(xls_regexp, ".m");
+            this.excelFileName = fileName
+        } else if (fileName.toLowerCase().match(m_regexp)){
+            this.sourceType = SourceType.M;
+            this.pqmFileName = fileName;
+            let xlsXname = fileName.toLowerCase().replace(m_regexp, ".xlsx");
+            let xlsMname = fileName.toLowerCase().replace(m_regexp, ".xlsm");
+            if (fs.existsSync(xlsMname) && fs.existsSync(xlsXname)) {
+                throw new Error("xlsX and xlsM files with the same names " +
+                                "exist simultaniously. I dont know which to update");
+            } else if (fs.existsSync(xlsXname)) {
+                this.excelFileName = xlsXname;
+            } else if (fs.existsSync(xlsMname)) {
+                this.excelFileName = xlsMname;
+            }
         } else {
-            throw new Error("Unsupported format ${fileName}");
+            throw new Error("Unable to handle format of file " + fileName);
         }
-
     }
 
     dispose(): void {

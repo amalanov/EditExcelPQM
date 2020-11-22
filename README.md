@@ -4,7 +4,7 @@ Want to export and edit Power Query M code of your xlsx file in VSCode and get i
 Please note
 * Plugin adds 4 items in right button pop-up menu named EEPQM***
 * It takes ~10 seconds for plugin to startup and show menu items
-* When you click M->Excel, it only says Excel process to update worksheet parameters, but **doesn't save** your file
+* On click M->Excel, it forces Excel to update worksheet queries, but **doesn't save** your file
 * In order to save your changes you need either to close Excel manually or click 'EEPQM: Close with saving'
 * Close actions from popup **doesn't kill** Excel process, but hides it. Dont know how to kill it fully
 * It uses COM api to export queries, so it starts an Excel instance
@@ -16,7 +16,7 @@ Please note
 ## Versions
 Get Electron version of your VSCode via Help->About
 * 1.1.1 supports Electron 7.2.1
-* 1.1.4 supports Electron 9.2.1
+* 1.1.5 supports Electron 9.2.1
 
 ## Features
 * Export all M queries from xlsx/xlsm file to *.m file
@@ -30,7 +30,7 @@ Get Electron version of your VSCode via Help->About
 
 ## Install to Visual Studio Code
 From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemName=AMalanov.editexcelpqm) or manually:
-1) Download [vsix file](editexcelpqm-1.1.4.vsix) from this repo
+1) Download [vsix file](editexcelpqm-1.1.5.vsix) from git repo
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
 

@@ -4,8 +4,11 @@ All notable changes to the "EditExcelPQM" extension will be documented in this f
 
 ## [Unreleased]
 
+## [1.1.5] - 2020-10-25
+### Fixed
+- Unable to open xlsm file
 
-## [1.1.2] - 2020-10-25
+## [1.1.4] - 2020-10-25
 ### Changed
 - After VSCode Electron update plugin fails to start and asks for recompilation of native node modules (winax). Recompiled for VSCode 1.50.1
 - Change popup items labels after user feedback
