@@ -85,7 +85,7 @@
 	},
 	"scripts": {
 		"build_console_app": "npm rebuild",
-		"build_winax_for_vscode": "cd node_modules/winax && node-gyp rebuild --target=9.2.1 --arch=x64 --dist-url=https://electronjs.org/headers",
+		"build_winax_for_vscode": "cd node_modules/winax && node-gyp rebuild --target=11.3.0 --arch=x64 --dist-url=https://electronjs.org/headers",
 		"build_vscode_extension": "npm rebuild && npm run build_winax_for_vscode",
 		"pack_extension": "vsce package",
 		"vscode:prepublish": "npm run compile",

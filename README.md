@@ -15,8 +15,9 @@ Please note
 
 ## Versions
 Get Electron version of your VSCode via Help->About
-* 1.1.1 supports Electron 7.2.1
-* 1.1.5 supports Electron 9.2.1
+* 1.1.1 supports Electron 7.2.1, NODE_MODULE_VERSION 75
+* 1.1.5 supports Electron 9.2.1, NODE_MODULE_VERSION 80
+* 1.1.6 supports Electron 11.3.0, NODE_MODULE_VERSION 85
 
 ## Features
 * Export all M queries from xlsx/xlsm file to *.m file
@@ -30,18 +31,18 @@ Get Electron version of your VSCode via Help->About
 
 ## Install to Visual Studio Code
 From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemName=AMalanov.editexcelpqm) or manually:
-1) Download [vsix file](editexcelpqm-1.1.5.vsix) from git repo
+1) Download [vsix file](https://github.com/amalanov/EditExcelPQM/blob/master/editexcelpqm-1.1.6.vsix) from git repo
 2) Go to download folder
 3) Run in console **code --install-extension /path/to/vsix**
 
 ## Known issues
 * Unable to fully close Excel - window is closed, but it remains in process manager
-* If your Excel shows a message on startup, plugin is unable to access queries before you close the popup
+* If your Excel shows a popup on startup, plugin is unable to access queries before you close the popup
 * On some systems the plugin opens Excel in background mode and I'm not able to do it visible.
 * (2020-10-24) After VSCode Electron update plugin fails to start and asks for recompilation of native node modules (winax)
 
-## Requirements
-* VSCode ^1.50.0
+## Requirements for 1.1.6
+* VSCode ^1.54.1
 * Windows
 * MS Excel ^2016 - cause it uses AxtiveXObject to open xlsx and extract data
 * It takes ~10 seconds for plugin to startup and show menu items
