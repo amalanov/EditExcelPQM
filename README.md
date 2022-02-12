@@ -41,8 +41,22 @@ From [VSCode extensions market](https://marketplace.visualstudio.com/items?itemN
 * On some systems the plugin opens Excel in background mode and I'm not able to do it visible.
 * (2020-10-24) After VSCode Electron update plugin fails to start and asks for recompilation of native node modules (winax)
 
-## Requirements for 1.1.6
+## Requirements for 1.1.7
 * VSCode ^1.54.1
 * Windows
-* MS Excel ^2016 - cause it uses AxtiveXObject to open xlsx and extract data
+* MS Excel ^2016 - cause the plugin uses AxtiveXObject to open xlsx and extract data
 * It takes ~10 seconds for plugin to startup and show menu items
+
+## How to build it yourself
+When Electrorn under VSCode updates, you need to recompile this plugin, because it uses native node module winax to access Windows COM api to interface with MS Excel via OLE. You need to do the following
+1) Clone this project from github
+2) Install Visual Studio C++ compiller for windows
+3) Run VSCode
+4) Go to Help -> About 
+5) Remember the Electron version
+6) Open file package.json of this project
+7) Find task "build_winax_for_vscode" in package.json
+8) Put the version after "--target=". For instance, --target=11.3.0
+9) Open terminal in VSCode
+10) Run "npm install" to download and install all plugin's depenencies 
+11) Run NPM scritp "build_vscode_extension"
